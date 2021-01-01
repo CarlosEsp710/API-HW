@@ -50,7 +50,7 @@ class AuthController extends Controller
         //     ]);
         // }
 
-        if (!$user) {
+        if (!Hash::check($request->password, $user->password)) {
             return response()->json([
                 'message' => 'Failed',
                 'message' => 'Email or Password is failed'
