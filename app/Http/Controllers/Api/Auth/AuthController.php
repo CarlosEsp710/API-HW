@@ -43,12 +43,12 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json([
-                'message' => 'Failed',
-                'message' => 'Email or Password is failed'
-            ]);
-        }
+        // if (!$user || !Hash::check($request->password, $user->password)) {
+        //     return response()->json([
+        //         'message' => 'Failed',
+        //         'message' => 'Email or Password is failed'
+        //     ]);
+        // }
 
         $token = $user->createToken($request->device_name)->plainTextToken;
         $this->response['message'] = 'success';
