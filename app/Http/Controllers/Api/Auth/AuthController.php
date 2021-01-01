@@ -23,7 +23,7 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        $data = User::created([
+        $data = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password)
@@ -42,13 +42,6 @@ class AuthController extends Controller
         ]);
 
         $user = User::where('email', $request->email)->first();
-
-        // if ( || !Hash::check($request->password, $user->password)) {
-        //     return response()->json([
-        //         'message' => 'Failed',
-        //         'message' => 'Email or Password is failed'
-        //     ]);
-        // }
 
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json([
