@@ -50,6 +50,13 @@ class AuthController extends Controller
         //     ]);
         // }
 
+        if (!$user) {
+            return response()->json([
+                'message' => 'Failed',
+                'message' => 'Email or Password is failed'
+            ]);
+        }
+
         $token = $user->createToken($request->device_name)->plainTextToken;
         $this->response['message'] = 'success';
         $this->response['data'] = [
