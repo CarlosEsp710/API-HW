@@ -74,14 +74,14 @@ class AuthController extends Controller
             'message' => 'Token deleted'
         ]);
     }
-    // public function me()
-    // {
-    //     $user = Auth::user();
 
-    //     $this->response['message'] = 'success';
-    //     $this->response['data'] = $user;
+    public function me()
+    {
+        $user = Auth::user();
 
-    //     return response()->json($this->response, 200);
-    // }
+        $this->response['message'] = 'success';
+        $this->response['data'] = $user;
 
+        return response()->json($this->response, 200);
+    }
 }
