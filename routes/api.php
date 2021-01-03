@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('auth/all', [App\Http\Controllers\Api\Auth\AuthController::class, 'all']);
 Route::post('auth/register', [App\Http\Controllers\Api\Auth\AuthController::class, 'register']);
 Route::post('auth/login', [App\Http\Controllers\Api\Auth\AuthController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('auth/me', [App\Http\Controllers\Api\Auth\AuthController::class, 'me']);
     Route::post('auth/logout', [App\Http\Controllers\Api\Auth\AuthController::class, 'logout']);
+    Route::get('auth/all', [App\Http\Controllers\Api\Auth\AuthController::class, 'all']);
 });
